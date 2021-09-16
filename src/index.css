@@ -218,10 +218,10 @@ main {
   background: var(--clr-white);
   max-width: var(--fixed-width);
   margin: 0 auto;
-  padding: 1rem 2rem;
   border-radius: var(--radius);
 }
 .form input {
+  position: relative;
   background: var(--clr-grey-10);
   border-color: transparent;
   border-radius: var(--radius);
