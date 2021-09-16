@@ -269,6 +269,7 @@ main {
   color: var(--clr-primary-4);
 }
 .prev-btn,
+.del-btn,
 .next-btn {
   color: var(--clr-primary-7);
   font-size: 1.25rem;

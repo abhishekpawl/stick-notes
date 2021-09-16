@@ -1,6 +1,7 @@
 import React, {useState, useReducer} from 'react';
 import {FaChevronLeft, FaChevronRight, FaQuoteLeft, FaQuoteRight} from "react-icons/fa";
 import Modal from './Modal';
+import {AiOutlineDelete} from "react-icons/ai";
 
 const reducer = (state, action) => {
   if(action.type === 'ADD_ITEM') {
@@ -24,6 +25,12 @@ const reducer = (state, action) => {
     return {...state, cards: []};
 
   }
+  if(action.type === 'DELETE_ONE') {
+
+    const newCards = state.cards.filter((card) => card.id !== action.payload);
+    return {...state, cards: newCards};
+
+  }
 
   throw new Error('no matchin type');
 }
@@ -37,15 +44,18 @@ const defaultState = {
 const Card = () => {
   const [dateInfo, setDateInfo] = useState('');
   const [note, setNote] = useState('');
+  const [id, setId] = useState('');
 
   const [state, dispatch] = useReducer(reducer, defaultState);
   const [index, setIndex] = useState(0);
 
+  var idDisp = '';
   var dateInfoDisp = '';
   var noteDisp = '';
 
   if(state.cards.length > 0) {
-    const {dateInfo, note} = state.cards[index];
+    const {id, dateInfo, note} = state.cards[index];
+    idDisp = id;
     dateInfoDisp = dateInfo;
     noteDisp = note;
   }
@@ -62,7 +72,11 @@ const Card = () => {
     e.preventDefault();
     
     if(dateInfo && note) {
+
+      const id = new Date().getTime().toString();
+
       const newNote = {
+        id,
         dateInfo,
         note
       }
@@ -101,6 +115,11 @@ const Card = () => {
     dispatch({type: 'CLEAR_ALL'});
   }
 
+  const deleteHandler = (id) => {
+    dispatch({type: 'DELETE_ONE', payload: id});
+    setIndex(0);
+  }
+
   return (
     <React.Fragment>
 
@@ -129,6 +148,10 @@ const Card = () => {
               onClick={prevClickHandler}>
                 <FaChevronLeft />
               </button>
+              <button className="del-btn"
+              onClick={() => deleteHandler(idDisp)}>
+                <AiOutlineDelete />
+              </button>
               <button className="next-btn"
               onClick={nextClickHandler}>
                 <FaChevronRight />
@@ -153,13 +176,13 @@ const Card = () => {
           }
           
           <div>
-            <label htmlFor="date">Date: </label>
+            <label htmlFor="date"><strong>Date:  </strong></label>
             <input type="date" id="date" name="date"
             value={dateInfo}
             onChange={dateHandler}></input>
           </div>
           <div>
-            <label htmlFor="note">Note:</label>
+            <label htmlFor="note"><strong>Note</strong></label>
             <input type="note" id="note" name="note"
             value={note}
             onChange={noteHandler}></input>
