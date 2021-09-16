@@ -2,7 +2,7 @@
 
 Hosted at: https://paul-sticknotes.netlify.app/
 
-An amateur project to start off with React.js. A stick-notes app using cards. The cards can be navigated through.
+An amateur project to start off with React.js. A stick-notes app using cards. The cards can be navigated through and a few other features, also to be worked on in the future.
 
 ## Available Scripts
 
