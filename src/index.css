@@ -52,7 +52,7 @@ Global Styles
   box-sizing: border-box;
 }
 body {
-  font-family: 'Segoe UI', Ububtu, BlinkMacSystemFont, Roboto, Oxygen, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: Calibri, 'Segoe UI', Ububtu, BlinkMacSystemFont, Roboto, Oxygen, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background: var(--clr-grey-4);
   color: var(--clr-grey-8);
   line-height: 1.5;
@@ -217,7 +217,7 @@ main {
   margin-bottom: 0.75rem;
 }
 .form {
-  color: var(--clr-primary-2);
+  color: var(--clr-primary-3);
   background: var(--clr-white);
   max-width: var(--fixed-width);
   margin: 0 auto;
@@ -275,7 +275,7 @@ main {
   font-size: 1.25rem;
   background: transparent;
   border-color: transparent;
-  margin: 0 0.5rem;
+  margin: 0 0.25rem;
   transition: var(--transition);
   cursor: pointer;
   margin-top: 1rem;
@@ -301,7 +301,7 @@ main {
 }
 .ind-card {
   background-color: var(--clr-grey-3);
-  color: var(--clr-primary-6);
+  color: var(--clr-primary-7);
   border-radius: var(--radius);
   padding: 1.5rem 2rem;
   box-shadow: var(--dark-shadow);
@@ -324,4 +324,7 @@ main {
   margin-bottom: 0;
   color: var(--clr-red-dark);
   transition: background-color 0.5s ease;
+}
+.ind-card h6 {
+  text-shadow: var(--clr-grey-2);
 }

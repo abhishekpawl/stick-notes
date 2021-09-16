@@ -2,38 +2,8 @@ import React, {useState, useReducer} from 'react';
 import {FaChevronLeft, FaChevronRight, FaQuoteLeft, FaQuoteRight} from "react-icons/fa";
 import Modal from './Modal';
 import {AiOutlineDelete} from "react-icons/ai";
-
-const reducer = (state, action) => {
-  if(action.type === 'ADD_ITEM') {
-
-    const newCards = [...state.cards, action.payload];
-    return {...state, cards: newCards};
-
-  }
-  if(action.type === 'EMPTY') {
-
-    return {...state, showModal: true, modalContent: 'All fields are required'};
-
-  }
-  if(action.type === 'CLOSE_MODAL') {
-
-    return {...state, showModal: false};
-
-  }
-  if(action.type === 'CLEAR_ALL') {
-
-    return {...state, cards: []};
-
-  }
-  if(action.type === 'DELETE_ONE') {
-
-    const newCards = state.cards.filter((card) => card.id !== action.payload);
-    return {...state, cards: newCards};
-
-  }
-
-  throw new Error('no matchin type');
-}
+import {reducer} from './reducer';
+import {FiChevronsLeft, FiChevronsRight} from 'react-icons/fi';
 
 const defaultState = {
   cards: [],
@@ -111,6 +81,14 @@ const Card = () => {
     }
   }
 
+  const prevMostHandler = () => {
+    setIndex(0);
+  }
+
+  const nextMostHandler = () => {
+    setIndex(state.cards.length - 1);
+  }
+
   const clearHandler = () => {
     dispatch({type: 'CLEAR_ALL'});
   }
@@ -142,8 +120,18 @@ const Card = () => {
             <h3 className="info" style={{marginTop: '1rem'}}>
               {noteDisp}
             </h3>
+            <h6 style={{marginTop: '1rem', color: 'var(--clr-grey-8)'}}>
+              {index + 1}
+            </h6>
 
             <div className="button-container">
+              {
+                state.cards.length > 2 &&
+                <button className="prev-btn"
+                onClick={prevMostHandler}>
+                  <FiChevronsLeft />
+                </button>
+              }
               <button className="prev-btn"
               onClick={prevClickHandler}>
                 <FaChevronLeft />
@@ -156,11 +144,20 @@ const Card = () => {
               onClick={nextClickHandler}>
                 <FaChevronRight />
               </button>
+              {
+                state.cards.length > 2 &&
+                <button className="next-btn"
+                onClick={nextMostHandler}>
+                  <FiChevronsRight />
+                </button>
+              }
             </div>
           </div>
         ) : (
           <div className="ind-card">
-            <h4 style={{marginTop: '1rem', marginBottom: '1rem'}}>No cards saved!</h4>
+            <h4 style={{marginTop: '1rem', marginBottom: '1rem', color: 'var(--clr-grey-6)'}}>
+              No cards saved!
+            </h4>
           </div>
         )}
 
