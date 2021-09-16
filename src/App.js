@@ -1,4 +1,5 @@
 import './App.css';
+import Card from './Card'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
           </h2>
           <div className="underline"></div>
         </div>
+        <Card />
       </div>
     </main>
   );
