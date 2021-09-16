@@ -210,6 +210,9 @@ main {
   margin-right: 0.75rem;
   margin-top: 0.2rem;
 }
+.date-tag {
+  margin-bottom: 0.25rem;
+}
 .info {
   margin-bottom: 0.75rem;
 }
@@ -294,4 +297,30 @@ main {
 .random-btn:hover {
   background: var(--clr-primary-5);
   color: var(--clr-primary-1);
+}
+.ind-card {
+  background-color: var(--clr-grey-3);
+  color: var(--clr-primary-6);
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+  box-shadow: var(--dark-shadow);
+  text-shadow: var(--light-shadow);
+  transition: var(--transition);
+  text-align: center;
+}
+.modal {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--clr-grey-6);
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  border-radius: var(--radius);
+  text-transform: capitalize;
+}
+.modal p {
+  margin-bottom: 0;
+  color: var(--clr-red-dark);
+  transition: background-color 0.5s ease;
 }
