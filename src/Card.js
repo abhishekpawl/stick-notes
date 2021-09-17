@@ -1,4 +1,4 @@
-import React, {useState, useReducer} from 'react';
+import React, {useState, useReducer, useRef, useEffect} from 'react';
 import {FaChevronLeft, FaChevronRight, FaQuoteLeft, FaQuoteRight} from "react-icons/fa";
 import Modal from './Modal';
 import {AiOutlineDelete} from "react-icons/ai";
@@ -98,6 +98,12 @@ const Card = () => {
     setIndex(0);
   }
 
+  const refInput = useRef(null);
+
+  useEffect(() => {
+    refInput.current.focus();
+  })
+
   return (
     <React.Fragment>
 
@@ -182,6 +188,7 @@ const Card = () => {
             <label htmlFor="note"><strong>Note</strong></label>
             <input type="note" id="note" name="note"
             value={note}
+            ref={refInput}
             onChange={noteHandler}></input>
           </div>
           <div>
