@@ -89,7 +89,7 @@ p {
   margin-bottom: 1.25rem;
   color: var(--clr-grey-5);
 }
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 800px) {
   h1 {
     font-size: 4rem;
   }
@@ -120,22 +120,17 @@ p {
 
 /* section */
 .section {
-  width: 90vw;
+  width: 110vw;
   margin: 0 auto;
   max-width: var(--max-width);
 }
 
 @media screen and (min-width: 992px) {
   .section {
-    width: 95vw;
+    width: 100vw;
   }
 }
 
-/*
-=============== 
-Reviews
-===============
-*/
 main {
   min-height: 100vh;
   display: grid;
@@ -229,7 +224,7 @@ main {
   background: var(--clr-grey-10);
   border-color: transparent;
   border-radius: var(--radius);
-  padding: 0.25rem 0.5rem;
+  padding: auto auto;
 }
 .form-control {
   margin: 0.5rem 0;

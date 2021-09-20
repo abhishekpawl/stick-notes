@@ -89,7 +89,9 @@ const Card = () => {
     setIndex(state.cards.length - 1);
   }
 
-  const clearHandler = () => {
+  const clearHandler = (e) => {
+    e.preventDefault();
+
     dispatch({type: 'CLEAR_ALL'});
   }
 
@@ -107,7 +109,8 @@ const Card = () => {
   return (
     <React.Fragment>
 
-      <article  className="card">
+      <article  className="card"
+      style={{margin: '1.5rem auto'}}>
 
         <div className="logo-container">
           <span className="left-quote-icon">
@@ -162,14 +165,17 @@ const Card = () => {
         ) : (
           <div className="ind-card">
             <h4 style={{marginTop: '1rem', marginBottom: '1rem', color: 'var(--clr-grey-6)'}}>
-              No cards saved!
+              <p>No</p>
+              <p>Cards</p>
+              <p>Saved!</p>
             </h4>
           </div>
         )}
 
       </article>
 
-      <article className="card">
+      <article className="card"
+        style={{margin: '1.5rem auto'}}>
 
         <form className="form">
 
@@ -179,19 +185,28 @@ const Card = () => {
           }
           
           <div>
-            <label htmlFor="date"><strong>Date:  </strong></label>
+            <label htmlFor="date"><strong>DATE</strong></label>
+          </div>
+          <div>
             <input type="date" id="date" name="date"
             value={dateInfo}
             onChange={dateHandler}></input>
           </div>
-          <div>
-            <label htmlFor="note"><strong>Note</strong></label>
-            <input type="note" id="note" name="note"
-            value={note}
-            ref={refInput}
-            onChange={noteHandler}></input>
+          <div style={{marginTop: '0.8rem'}}>
+            <label htmlFor="note"><strong>NOTE</strong></label>
           </div>
           <div>
+            {/* <input type="note" id="note" name="note"
+            value={note}
+            ref={refInput}
+            onChange={noteHandler}></input> */}
+            <textarea rows="5" cols="35"
+            type="note" id="note" name="note"
+            value={note}
+            ref={refInput}
+            onChange={noteHandler}></textarea>
+          </div>
+          <div style={{marginTop: '0.5rem'}}>
             <button className="btn"
             onClick={submitHandler}>Add note</button>
           </div>
